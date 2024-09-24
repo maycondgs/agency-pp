@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="container-fluid px-4">
+            <h1>Dashboard de Leads</h1>
+            <p>Total de Leads: {{ total_leads }}</p>
+            <p>Leads Atendidos: {{ leads_atendidos }}</p>
+            <p>Leads Convertidos: {{ leads_convertidos }}</p>
+            
+            <h2>Leads Não Atendidos</h2>
+            <ul>
+                {% for lead in leads_nao_atendidos %}
+                    <li>
+                        {{ lead.name }} - {{ lead.telephone }} 
+                        <form action="{% url 'marcar_atendido' lead.id %}" method="post" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit">Marcar como Atendido</button>
+                        </form>
+                    </li>
+                {% endfor %}
+            </ul>
+            
+            <h2>Leads Atendidos</h2>
+            <ul>
+                {% for lead in leads_atendidos_list %}
+                    <li>
+                        {{ lead.name }} - {{ lead.telephone }}
+                        <form action="{% url 'marcar_convertido' lead.id %}" method="post" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit">Converter</button>
+                        </form>
+                    </li>
+                {% endfor %}
+            </ul>
+
+        </div>
+    </div>
+
+    {% endblock content %}

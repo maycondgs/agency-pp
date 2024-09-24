@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="container-fluid px-4">
+            <h2 class="my-4">Central Generator</h2>
+            <div class="row">
+                <h1>Dashboard</h1>
+                <p>Total de Leads: {{ total_leads }}</p>
+                <p>Leads Enviados Hoje: {{ enviados_no_dia }}</p>
+                <p>Total de Leads Enviados: {{ enviados_total }}</p>
+
+            </div>
+
+        </div>
+    </div>
+
+    {% endblock content %}

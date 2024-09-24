@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="container-fluid px-4">
+
+            <h1>Ativar Serviço para {{ client.name }}</h1>
+
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Ativar Serviço</button>
+            </form>
+            
+            <a href="{% url 'perfil_cliente' %}">Voltar ao Perfil</a>
+            
+
+        </div>
+    </div>
+
+    {% endblock content %}
+
+
+
+

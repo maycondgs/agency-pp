@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="container-fluid px-4">
+
+            <h1>Faturas Pendentes de {{ client.name }}</h1>
+
+            {% if faturas_pendentes %}
+                <ul>
+                {% for fatura in faturas_pendentes %}
+                    <li>
+                        Fatura #{{ fatura.id }} - Valor: R$ {{ fatura.amount_due }} - Vencimento: {{ fatura.due_date }}
+                        <form method="post" action="{% url 'pagar_fatura' fatura.id %}">
+                            {% csrf_token %}
+                            <button type="submit">Pagar</button>
+                        </form>
+                    </li>
+                {% endfor %}
+                </ul>
+            {% else %}
+                <p>Você não possui faturas pendentes.</p>
+            {% endif %}
+            
+            <a href="{% url 'perfil_cliente' %}">Voltar ao Perfil</a>
+            
+        </div>
+    </div>
+
+    {% endblock content %}
+
+
+
+

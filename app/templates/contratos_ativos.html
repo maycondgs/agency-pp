@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="container-fluid px-4">
+
+            <h1>Central de Controle de Contratos</h1>
+
+            <h2>Contratos Inativos</h2>
+            <ul>
+                {% for client in contratos_inativos %}
+                    <li>{{ client.name }} - <a href="{% url 'upload_contract' client.id %}">Anexar Contrato</a></li>
+                {% endfor %}
+            </ul>
+            
+            <h2>Contratos Ativos</h2>
+            <ul>
+                {% for client in contratos_ativos %}
+                    <li>{{ client.name }} - 
+                        {% if client.service_status == 'inactive' %}
+                            <form action="{% url 'ativar_servico' client.id %}" method="post" style="display:inline;">
+                                {% csrf_token %}
+                                <button type="submit">Ativar Prestação de Serviço</button>
+                            </form>
+                        {% else %}
+                            Serviço Ativo
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+            
+
+        </div>
+    </div>
+
+    {% endblock content %}
+
+
+
+

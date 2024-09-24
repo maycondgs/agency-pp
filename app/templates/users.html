@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="bg-primary py-3">
+    <div class="container">
+        <a class="text-white" href="{% url 'dashboard' %}">Dashboard /</a>
+        <a class="text-white" href="{% url 'users' %}">Users </a>
+    </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Users</h1>
+      <hr />
+      <div class="row">
+        {% for user in users %}
+        <div class="col-md-3">
+          <div class="card">
+            {{ user }}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

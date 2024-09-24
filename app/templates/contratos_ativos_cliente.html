@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="container-fluid px-4">
+
+            <h1>Contratos Ativos de {{ client.name }}</h1>
+
+            {% if contratos_ativos %}
+                <p>Você possui um contrato ativo.</p>
+                <p><a href="{{ client.contract_file.url }}">Baixar Contrato Assinado</a></p>
+                {% if client.service_status == 'inactive' %}
+                    <p>Seu serviço ainda não foi ativado.</p>
+                {% else %}
+                    <p>Seu serviço está ativo.</p>
+                {% endif %}
+            {% else %}
+                <p>Você não possui contratos ativos no momento.</p>
+            {% endif %}
+            
+            <a href="{% url 'perfil_cliente' %}">Voltar ao Perfil</a>
+            
+
+        </div>
+    </div>
+
+    {% endblock content %}
+
+
+
+

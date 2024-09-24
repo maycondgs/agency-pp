@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row justifiy-content-center">
+            <div class="col-md-6">
+                <div class="">
+                    <div class="card mt-3 shadow">
+                        <div class="card-body">
+                            <form action="" method="post">
+                                {% csrf_token %}
+                                <div class="text-center">
+                                    <h4>REGISTER</h4>
+                                </div>
+                                <hr>
+                                <div class="form-group">
+                                    <label for="">Username: </label>
+                                    {{ form.username }}
+                                    {% if form.errors.username %}
+                                    <label class="text-danger">{{ form.errors.username }}</label>
+                                    {% endif %}
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Email: </label>
+                                    {{ form.email }}
+                                    {% if form.errors.email %}
+                                    <label class="text-danger">{{ form.errors.email }}</label>
+                                    {% endif %}
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Password: </label>
+                                    {{ form.password1 }}
+                                    {% if form.errors.password1 %}
+                                    <label class="text-danger">{{ form.errors.password1 }}</label>
+                                    {% endif %}
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Confirm Password: </label>
+                                    {{ form.password2 }}
+                                    {% if form.errors.password2 %}
+                                    <label class="text-danger">{{ form.errors.password2 }}</label>
+                                    {% endif %}
+                                </div>
+                                <button type="submit" class="btn float-end shadow btn-success px-4">Register</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="container-fluid px-4">
+
+            <h1>Perfil de {{ client.name }}</h1>
+            <p>Email: {{ client.email }}</p>
+            <p>Telefone: {{ client.telephone }}</p>
+            <p>Endereço: {{ client.address }}</p>
+            <p>Plano: {{ client.plan }}</p>
+            <p>Mensalidade: {{ client.monthly_payment }}</p>
+            
+            <a href="{% url 'contratos_ativos_cliente' %}">Ver Contratos Ativos</a><br>
+            <a href="{% url 'pagamento_faturas' %}">Pagar Faturas</a><br>
+            <a href="{% url 'logout' %}">Sair</a>
+
+        </div>
+    </div>
+
+    {% endblock content %}
+
+
+
+

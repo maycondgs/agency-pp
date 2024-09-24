@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="container-fluid px-4">
+      <h2 class="my-4">Leads</h2>
+      <div class="row">
+        {% for lead in leads %}
+          <div class="col-md-4 text-center">
+            <div class="card bg-primary text-white mb-4">
+              <div class="card-body col">
+                <h3>{{ lead.id }} - {{ lead.name }}</h3>
+                <h6 class="text-dark">{{ lead.telephone }}</h6>
+                <h6 class="text-dark">{{ lead.email }}</h6>
+                <h5>{{ lead.service.name }}</h5>
+              </div>
+              <div class="">
+                <h5 class="btn btn-success"><a class="text-white" href="https://wa.me/55{{ lead.telephone }}"> Iniciar</a></h5>
+                <h5 class="btn btn-warning"><a class="text-white btns" href="#"><i class="fas fa-chart-area"></i> Iniciado</a></h5>
+                <h5 class="btn btn-danger"><a class="text-white btns" href="#"><i class="fas fa-chart-area"></i> Remover</a></h5>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+    </div>
+  </div>
+
+  {% endblock content %}
